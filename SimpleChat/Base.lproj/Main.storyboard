@@ -32,7 +32,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Vo0-qu-c4F">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Vo0-qu-c4F">
                                                     <rect key="frame" x="24" y="5" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="lgU-dM-C9k"/>
@@ -176,8 +176,11 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZM-QU-Lo9">
-                                <rect key="frame" x="0.0" y="667" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="582" width="375" height="50"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="pgI-k2-4aq">
+                                        <rect key="frame" x="336" y="40" width="10" height="10"/>
+                                    </imageView>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8m-H6-ee2" customClass="SCChatButton">
                                         <rect key="frame" x="252" y="0.0" width="90" height="50"/>
                                         <color key="backgroundColor" red="0.30980392159999998" green="0.34901960780000002" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -211,13 +214,15 @@
                                     <constraint firstAttribute="trailing" secondItem="r8m-H6-ee2" secondAttribute="trailing" constant="33" id="73h-Md-fEI"/>
                                     <constraint firstAttribute="height" constant="50" id="A1g-EF-DK2"/>
                                     <constraint firstAttribute="bottom" secondItem="r8m-H6-ee2" secondAttribute="bottom" id="B7o-Tw-t5A"/>
+                                    <constraint firstItem="pgI-k2-4aq" firstAttribute="leading" secondItem="r8m-H6-ee2" secondAttribute="trailing" constant="-6" id="IYA-S6-E33"/>
+                                    <constraint firstItem="pgI-k2-4aq" firstAttribute="bottom" secondItem="r8m-H6-ee2" secondAttribute="bottom" id="Vsn-t1-bOb"/>
                                     <constraint firstAttribute="bottom" secondItem="YKX-dI-LXk" secondAttribute="bottom" id="ZvJ-3B-Has"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1ZM-QU-Lo9" secondAttribute="bottom" constant="-50" id="Hn7-Wp-BEj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1ZM-QU-Lo9" secondAttribute="bottom" constant="35" id="Hn7-Wp-BEj"/>
                             <constraint firstItem="1ZM-QU-Lo9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KsV-Cz-Gp0"/>
                             <constraint firstAttribute="trailing" secondItem="1ZM-QU-Lo9" secondAttribute="trailing" id="Zg2-vv-6lo"/>
                             <constraint firstItem="2LY-il-TGr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="enI-xo-sJn"/>
@@ -241,5 +246,6 @@
     </scenes>
     <resources>
         <image name="Placeholder" width="750" height="750"/>
+        <image name="triangle" width="10" height="10"/>
     </resources>
 </document>

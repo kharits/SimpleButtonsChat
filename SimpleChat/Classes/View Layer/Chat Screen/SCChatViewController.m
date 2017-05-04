@@ -56,9 +56,28 @@ NSInteger const AnswersButtonTopEdge = 20;
 
 - (void)updateMessages{
     [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([self.chatsMessages count]-1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([self.chatsMessages count]-1) inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([self.chatsMessages count]) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([self.chatsMessages count]) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    } completion:^(BOOL finished) {
+        CGRect newFrame = self.headerView.frame;
+        newFrame.size.height = SCREEN_HEIGHT-20-AnswersButtonBottomEdgeWhenShow-AnswersButtonHeight-AnswersButtonTopEdge;
+        int x = 0;
+        for (UITableViewCell *cell in self.tableView.visibleCells) {
+            if (x == [self.tableView.visibleCells count]-1) {
+                break;
+            }
+            newFrame.size.height -= cell.frame.size.height;
+            x++;
+        }
+        if (newFrame.size.height < 0) {
+            newFrame.size.height = 0;
+        }
+        [self.headerView setFrame:newFrame];
+        [self.tableView setTableHeaderView:self.headerView];
+    }];
+    
 }
 
 - (void)showButtons{
@@ -115,30 +134,6 @@ NSInteger const AnswersButtonTopEdge = 20;
             chatCell.authorLabel.text = message.author;
             chatCell.messageLabel.text = message.text;
         }
-    }
-}
-
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    NSLog(@"cancelScrollAnimation");
-    if (self.headerView.frame.size.height != 0) {
-        CGRect newFrame = self.headerView.frame;
-        newFrame.size.height = SCREEN_HEIGHT-20-AnswersButtonBottomEdgeWhenShow-AnswersButtonHeight-AnswersButtonTopEdge;
-        int x = 0;
-        for (UITableViewCell *cell in self.tableView.visibleCells) {
-            if (x == [self.tableView.visibleCells count]-1) {
-                break;
-            }
-            newFrame.size.height -= cell.frame.size.height;
-            x++;
-        }
-        if (newFrame.size.height < 0) {
-            newFrame.size.height = 0;
-        }
-        [self.headerView setFrame:newFrame];
-//        [self.tableView beginUpdates];
-        [self.tableView setTableHeaderView:self.headerView];
-//        [self.tableView endUpdates];
     }
 }
 
