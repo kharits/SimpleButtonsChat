@@ -58,7 +58,7 @@ NSInteger const AnswersButtonTopEdge = 20;
     [self.tableView beginUpdates];
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([self.chatsMessages count]-1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([self.chatsMessages count]) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([self.chatsMessages count]) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)showButtons{
